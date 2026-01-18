@@ -1,0 +1,641 @@
+/*
+ * BariaTrack Website Theme
+ * 
+ * Basiert auf dem Material Design 3 Farbschema der BariaTrack App
+ * 
+ * Primärfarben (Warmes Orange): Energie, Gesundheit, Vitalität
+ * Sekundärfarben (Warmes Braun): Stabilität, Zuverlässigkeit, Vertrauen
+ * Tertiärfarben (Salbeigrün): Wachstum, Wellness, Balance
+ */
+
+/* ============================================
+   CSS Custom Properties (Variablen)
+   ============================================ */
+
+:root {
+  /* Primary Colors */
+  --bt-primary: #845416;
+  --bt-primary-light: #FBBA73;
+  --bt-primary-container: #FFDCBC;
+  --bt-on-primary: #FFFFFF;
+  --bt-on-primary-container: #2C1600;
+  
+  /* Secondary Colors */
+  --bt-secondary: #725A42;
+  --bt-secondary-light: #E0C1A3;
+  --bt-secondary-container: #FEDDBE;
+  --bt-on-secondary: #FFFFFF;
+  --bt-on-secondary-container: #2A1806;
+  
+  /* Tertiary Colors (Salbeigrün) */
+  --bt-tertiary: #56633B;
+  --bt-tertiary-light: #BECC9C;
+  --bt-tertiary-container: #D6E8B0;
+  
+  /* Surface Colors */
+  --bt-background: #FFF8F4;
+  --bt-surface: #FFF8F4;
+  --bt-surface-variant: #F1DFD0;
+  --bt-surface-container: #FAEBE0;
+  --bt-surface-container-high: #F4E6DA;
+  
+  /* Text Colors */
+  --bt-on-surface: #1F1B16;
+  --bt-on-surface-variant: #504539;
+  --bt-outline: #827568;
+  --bt-outline-variant: #D5C4B5;
+  
+  /* Semantic Colors */
+  --bt-error: #BA1A1A;
+  --bt-error-container: #FFDAD6;
+  --bt-success: #56633B;
+  --bt-success-container: #D6E8B0;
+  --bt-warning: #845416;
+  
+  /* Dark Theme Colors */
+  --bt-dark-background: #19120C;
+  --bt-dark-surface: #19120C;
+  --bt-dark-on-surface: #EEE0D5;
+  --bt-dark-primary: #FBBA73;
+  --bt-dark-secondary: #E0C1A3;
+  
+  /* Typography - Lexend Font Family */
+  --bt-font-family: 'Lexend', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --bt-font-display: 'Lexend Deca', var(--bt-font-family);
+  
+  /* Spacing (basierend auf 4dp/8dp Grid) */
+  --bt-spacing-xs: 4px;
+  --bt-spacing-sm: 8px;
+  --bt-spacing-md: 16px;
+  --bt-spacing-lg: 24px;
+  --bt-spacing-xl: 32px;
+  --bt-spacing-xxl: 48px;
+  
+  /* Border Radius */
+  --bt-radius-sm: 8px;
+  --bt-radius-md: 12px;
+  --bt-radius-lg: 16px;
+  --bt-radius-xl: 28px;
+  
+  /* Shadows */
+  --bt-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08);
+  --bt-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+  --bt-shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   Google Fonts Import
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Lexend+Deca:wght@400;500;600;700&display=swap');
+
+/* ============================================
+   Base Styles
+   ============================================ */
+
+body {
+  font-family: var(--bt-font-family);
+  background-color: var(--bt-background);
+  color: var(--bt-on-surface);
+  line-height: 1.6;
+}
+
+/* ============================================
+   Typography
+   ============================================ */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--bt-font-display);
+  color: var(--bt-on-surface);
+  margin-top: var(--bt-spacing-lg);
+  margin-bottom: var(--bt-spacing-md);
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--bt-primary);
+  border-bottom: 3px solid var(--bt-primary);
+  padding-bottom: var(--bt-spacing-sm);
+}
+
+h2 {
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: var(--bt-secondary);
+  border-bottom: 2px solid var(--bt-outline-variant);
+  padding-bottom: var(--bt-spacing-xs);
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--bt-on-surface);
+}
+
+h4 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--bt-on-surface-variant);
+}
+
+p {
+  margin-bottom: var(--bt-spacing-md);
+  color: var(--bt-on-surface);
+}
+
+/* ============================================
+   Links
+   ============================================ */
+
+a {
+  color: var(--bt-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--bt-primary-light);
+  text-decoration: underline;
+}
+
+a:visited {
+  color: var(--bt-secondary);
+}
+
+/* ============================================
+   Blockquotes (für wichtige Hinweise)
+   ============================================ */
+
+blockquote {
+  background-color: var(--bt-primary-container);
+  border-left: 4px solid var(--bt-primary);
+  padding: var(--bt-spacing-md);
+  margin: var(--bt-spacing-lg) 0;
+  border-radius: 0 var(--bt-radius-sm) var(--bt-radius-sm) 0;
+  font-style: normal;
+}
+
+blockquote p {
+  margin: 0;
+  color: var(--bt-on-primary-container);
+  font-weight: 500;
+}
+
+/* ============================================
+   Tables
+   ============================================ */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--bt-spacing-lg) 0;
+  background-color: var(--bt-surface);
+  border-radius: var(--bt-radius-md);
+  overflow: hidden;
+  box-shadow: var(--bt-shadow-sm);
+}
+
+thead {
+  background-color: var(--bt-primary);
+  color: var(--bt-on-primary);
+}
+
+th {
+  padding: var(--bt-spacing-md);
+  text-align: left;
+  font-weight: 600;
+  font-family: var(--bt-font-display);
+}
+
+td {
+  padding: var(--bt-spacing-md);
+  border-bottom: 1px solid var(--bt-outline-variant);
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background-color: var(--bt-surface-container);
+}
+
+/* Emoji als Icon in Tabellen */
+td:first-child {
+  font-size: 1.2em;
+}
+
+/* ============================================
+   Code Blocks
+   ============================================ */
+
+code {
+  background-color: var(--bt-surface-variant);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: var(--bt-secondary);
+}
+
+pre {
+  background-color: var(--bt-surface-container-high);
+  padding: var(--bt-spacing-md);
+  border-radius: var(--bt-radius-md);
+  overflow-x: auto;
+  border: 1px solid var(--bt-outline-variant);
+}
+
+pre code {
+  background: none;
+  padding: 0;
+}
+
+/* ============================================
+   Cards & Containers
+   ============================================ */
+
+.card, .price-card {
+  background-color: var(--bt-surface);
+  border-radius: var(--bt-radius-lg);
+  padding: var(--bt-spacing-lg);
+  margin: var(--bt-spacing-md) 0;
+  box-shadow: var(--bt-shadow-md);
+  border: 1px solid var(--bt-outline-variant);
+}
+
+.price-card {
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.price-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--bt-shadow-lg);
+}
+
+.price-card.recommended {
+  border: 3px solid var(--bt-primary);
+  background: linear-gradient(135deg, var(--bt-primary-container) 0%, var(--bt-surface) 100%);
+  position: relative;
+}
+
+.price-card.recommended::before {
+  content: "🏆 EMPFOHLEN";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--bt-primary);
+  color: var(--bt-on-primary);
+  padding: 4px 16px;
+  border-radius: var(--bt-radius-xl);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* ============================================
+   Target Group Section
+   ============================================ */
+
+.target-group {
+  display: grid;
+  gap: var(--bt-spacing-md);
+}
+
+@media (min-width: 768px) {
+  .target-group {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.target-group h3 {
+  background-color: var(--bt-surface-container);
+  padding: var(--bt-spacing-md);
+  border-radius: var(--bt-radius-md);
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* ============================================
+   Screenshots Section
+   ============================================ */
+
+.screenshots {
+  display: grid;
+  gap: var(--bt-spacing-md);
+  margin: var(--bt-spacing-lg) 0;
+}
+
+@media (min-width: 600px) {
+  .screenshots {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .screenshots {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.screenshots img {
+  width: 100%;
+  border-radius: var(--bt-radius-md);
+  box-shadow: var(--bt-shadow-md);
+  transition: transform 0.2s ease;
+}
+
+.screenshots img:hover {
+  transform: scale(1.02);
+}
+
+/* ============================================
+   Next Steps Section
+   ============================================ */
+
+.next-steps {
+  background: linear-gradient(135deg, var(--bt-tertiary-container) 0%, var(--bt-surface) 100%);
+  padding: var(--bt-spacing-lg);
+  border-radius: var(--bt-radius-lg);
+  margin: var(--bt-spacing-xl) 0;
+}
+
+.next-steps h3 {
+  color: var(--bt-tertiary);
+  margin-top: 0;
+}
+
+/* ============================================
+   Footer Note
+   ============================================ */
+
+.footer-note {
+  background-color: var(--bt-surface-variant);
+  padding: var(--bt-spacing-md);
+  border-radius: var(--bt-radius-md);
+  margin-top: var(--bt-spacing-xl);
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--bt-on-surface-variant);
+}
+
+/* ============================================
+   Lists
+   ============================================ */
+
+ul, ol {
+  padding-left: var(--bt-spacing-lg);
+  margin-bottom: var(--bt-spacing-md);
+}
+
+li {
+  margin-bottom: var(--bt-spacing-sm);
+}
+
+/* Checkmark List Style */
+ul li {
+  list-style: none;
+  position: relative;
+  padding-left: var(--bt-spacing-lg);
+}
+
+ul li::before {
+  content: "•";
+  color: var(--bt-primary);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+/* ============================================
+   Horizontal Rules
+   ============================================ */
+
+hr {
+  border: none;
+  border-top: 2px solid var(--bt-outline-variant);
+  margin: var(--bt-spacing-xl) 0;
+}
+
+/* ============================================
+   Images
+   ============================================ */
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--bt-radius-md);
+}
+
+/* Placeholder Image Styling */
+img[src*="placeholder"] {
+  background-color: var(--bt-surface-variant);
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--bt-outline);
+}
+
+/* ============================================
+   Buttons & CTAs
+   ============================================ */
+
+.btn, button, input[type="submit"] {
+  display: inline-block;
+  background-color: var(--bt-primary);
+  color: var(--bt-on-primary);
+  padding: var(--bt-spacing-sm) var(--bt-spacing-lg);
+  border-radius: var(--bt-radius-xl);
+  border: none;
+  font-family: var(--bt-font-family);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  text-decoration: none;
+}
+
+.btn:hover, button:hover, input[type="submit"]:hover {
+  background-color: var(--bt-secondary);
+  transform: translateY(-2px);
+  text-decoration: none;
+  color: var(--bt-on-secondary);
+}
+
+.btn-secondary {
+  background-color: var(--bt-secondary-container);
+  color: var(--bt-on-secondary-container);
+}
+
+.btn-secondary:hover {
+  background-color: var(--bt-secondary);
+  color: var(--bt-on-secondary);
+}
+
+/* ============================================
+   Navigation
+   ============================================ */
+
+nav, .navigation {
+  background-color: var(--bt-surface-container);
+  padding: var(--bt-spacing-md);
+  border-radius: var(--bt-radius-md);
+  margin-bottom: var(--bt-spacing-lg);
+}
+
+nav a {
+  margin-right: var(--bt-spacing-md);
+  padding: var(--bt-spacing-xs) var(--bt-spacing-sm);
+  border-radius: var(--bt-radius-sm);
+}
+
+nav a:hover {
+  background-color: var(--bt-primary-container);
+  text-decoration: none;
+}
+
+/* ============================================
+   Feature Icons (Emoji Styling)
+   ============================================ */
+
+/* Make emojis slightly larger for visibility */
+h2 > *:first-child,
+h3 > *:first-child {
+  font-size: 1.1em;
+}
+
+/* ============================================
+   Responsive Adjustments
+   ============================================ */
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  table {
+    font-size: 0.9rem;
+  }
+  
+  th, td {
+    padding: var(--bt-spacing-sm);
+  }
+  
+  .price-card.recommended::before {
+    font-size: 0.65rem;
+    padding: 3px 12px;
+  }
+}
+
+/* ============================================
+   Dark Mode Support
+   ============================================ */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bt-background: var(--bt-dark-background);
+    --bt-surface: var(--bt-dark-surface);
+    --bt-on-surface: var(--bt-dark-on-surface);
+    --bt-primary: var(--bt-dark-primary);
+    --bt-secondary: var(--bt-dark-secondary);
+  }
+  
+  body {
+    background-color: var(--bt-dark-background);
+    color: var(--bt-dark-on-surface);
+  }
+  
+  h1 {
+    color: var(--bt-dark-primary);
+    border-bottom-color: var(--bt-dark-primary);
+  }
+  
+  h2 {
+    color: var(--bt-dark-secondary);
+  }
+  
+  table {
+    background-color: #2D2419;
+  }
+  
+  thead {
+    background-color: #3D2D1A;
+  }
+  
+  .card, .price-card {
+    background-color: #2D2419;
+    border-color: #4D3D29;
+  }
+  
+  blockquote {
+    background-color: #3D2D1A;
+  }
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+
+@media print {
+  body {
+    background-color: white;
+    color: black;
+  }
+  
+  h1, h2, h3 {
+    color: black;
+  }
+  
+  .price-card, .card {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+  
+  a {
+    color: black;
+    text-decoration: underline;
+  }
+  
+  nav, .navigation {
+    display: none;
+  }
+}
+
+/* ============================================
+   Accessibility
+   ============================================ */
+
+/* Focus States */
+a:focus, button:focus, input:focus {
+  outline: 3px solid var(--bt-primary-light);
+  outline-offset: 2px;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Skip Link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: var(--bt-primary);
+  color: var(--bt-on-primary);
+  padding: var(--bt-spacing-sm) var(--bt-spacing-md);
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+}

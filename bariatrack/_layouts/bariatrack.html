@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title | default: site.title }}</title>
+    <meta name="description" content="{{ page.description | default: 'BariaTrack - Dein persönlicher Begleiter für bariatrische Nachsorge und GLP-1 Therapie' }}">
+    
+    <!-- BariaTrack Theme CSS -->
+    <link rel="stylesheet" href="{{ '/bariatrack/assets/css/bariatrack-theme.css' | relative_url }}">
+    
+    <!-- Favicon (Platzhalter) -->
+    <link rel="icon" href="{{ '/bariatrack/images/favicon.ico' | relative_url }}" type="image/x-icon">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="{{ page.title | default: site.title }}">
+    <meta property="og:description" content="{{ page.description | default: 'BariaTrack - Dein persönlicher Begleiter' }}">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{{ '/bariatrack/images/og-image-placeholder.png' | absolute_url }}">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
+    
+    <header class="site-header">
+        <div class="header-container">
+            <a href="{{ '/bariatrack/' | relative_url }}" class="logo-link">
+                <img src="{{ '/bariatrack/images/logo-placeholder.png' | relative_url }}" alt="BariaTrack Logo" class="logo" onerror="this.style.display='none'">
+                <span class="site-title">BariaTrack</span>
+            </a>
+            <nav class="main-nav" aria-label="Hauptnavigation">
+                <a href="{{ '/bariatrack/' | relative_url }}">Start</a>
+                <a href="{{ '/bariatrack/features' | relative_url }}">Funktionen</a>
+                <a href="{{ '/bariatrack/free-vs-pro' | relative_url }}">Free vs. Pro</a>
+                <a href="{{ '/bariatrack/getting-started' | relative_url }}">Erste Schritte</a>
+                <a href="{{ '/bariatrack/faq' | relative_url }}">FAQ</a>
+                <a href="{{ '/bariatrack/support' | relative_url }}">Support</a>
+            </nav>
+        </div>
+    </header>
+    
+    <main id="main-content" class="main-content">
+        <article class="content-wrapper">
+            {{ content }}
+        </article>
+    </main>
+    
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="{{ '/bariatrack/privacy' | relative_url }}">Datenschutz</a>
+                <a href="{{ '/bariatrack/support' | relative_url }}">Support</a>
+                <a href="{{ '/bariatrack/faq' | relative_url }}">FAQ</a>
+            </div>
+            <p class="footer-note">
+                © {{ 'now' | date: "%Y" }} BariaTrack. 
+                BariaTrack ist keine medizinische Beratung.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
